@@ -45,6 +45,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   width: 100%;
+  height: 10vh;
   display: flex;
   font-size: 1.4rem;
   padding: 3rem 4rem;
@@ -64,14 +65,12 @@ export default {
     width: 33.333%;
     height: 100%;
     position: relative;
-    background: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     img {
-      top: -3rem;
       height: 6rem;
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%);
     }
   }
   .navbar {
@@ -92,6 +91,18 @@ export default {
         width: 100%;
         background: black;
         border-radius: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding: 1rem;
+
+    .time {
+      p {
+        font-size: 1rem;
       }
     }
   }
