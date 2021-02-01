@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column column1">
         <div class="label">
-          <h4>Daily Highlights</h4>
+          <h4>{{ $store.state.column1Label }}</h4>
         </div>
         <test-box
           v-for="article in $store.state.headlines"
@@ -18,10 +18,10 @@
       </div>
       <div class="column column2">
         <div class="label">
-          <h4>BBC Sport</h4>
+          <h4>{{ $store.state.column2Label }}</h4>
         </div>
         <test-box
-          v-for="article in $store.state.sport"
+          v-for="article in $store.state.column2News"
           :key="article.title"
           :title="article.title"
           :description="article.description"
@@ -33,38 +33,64 @@
 
       <div class="column column3">
         <div class="label">
-          <h4>Business Insider</h4>
+          <h4>{{ $store.state.column3Label }}</h4>
         </div>
         <test-box
-          v-for="article in $store.state.business"
+          v-for="article in $store.state.column3News"
           :key="article.title"
           :title="article.title"
           :description="article.description"
           :image="article.urlToImage"
-          :cnn="article.source.id === 'cnn'"
-          :nbc="article.source.id === 'nbc-news'"
         />
       </div>
       <div class="column column4">
         <div class="label">
-          <h4>buzzfeed</h4>
+          <h4>{{ $store.state.column4Label }}</h4>
         </div>
         <test-box
-          v-for="article in $store.state.cultural"
+          v-for="article in $store.state.column4News"
           :key="article.title"
           :title="article.title"
           :description="article.description"
           :image="article.urlToImage"
-          :cnn="article.source.id === 'cnn'"
-          :nbc="article.source.id === 'nbc-news'"
         />
       </div>
-      <div class="column column5"></div>
-      <div class="column column6"></div>
-      <div class="column column7"></div>
-      <div class="column column8"></div>
-      <div class="column column9"></div>
-      <div class="column column10"></div>
+      <div class="column column5">
+        <div class="label">
+          <h4>{{ $store.state.column5Label }}</h4>
+        </div>
+        <test-box
+          v-for="article in $store.state.column5News"
+          :key="article.title"
+          :title="article.title"
+          :description="article.description"
+          :image="article.urlToImage"
+        />
+      </div>
+      <div class="column column6">
+        <div class="label">
+          <h4>{{ $store.state.column6Label }}</h4>
+        </div>
+        <test-box
+          v-for="article in $store.state.column6News"
+          :key="article.title"
+          :title="article.title"
+          :description="article.description"
+          :image="article.urlToImage"
+        />
+      </div>
+      <div class="column column7">
+        <div class="label">
+          <h4>{{ $store.state.column7Label }}</h4>
+        </div>
+        <test-box
+          v-for="article in $store.state.column7News"
+          :key="article.title"
+          :title="article.title"
+          :description="article.description"
+          :image="article.urlToImage"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -75,10 +101,6 @@ export default {
   name: 'Homepage',
   components: {
     TestBox,
-  },
-  props: ['primaryColor'],
-  mounted() {
-    console.log(this.$store.state.headlines)
   },
 }
 </script>
@@ -106,14 +128,14 @@ export default {
       overflow-y: scroll;
 
       .label {
-        color: white;
+        color: black;
         width: 100%;
         display: flex;
         text-transform: uppercase;
         padding: 0.7rem;
         justify-content: center;
         align-items: center;
-        border-bottom: 1px solid #ebebeb;
+        border-bottom: 1px solid black;
 
         h4 {
           font-size: 1rem;
@@ -125,6 +147,11 @@ export default {
         max-width: 30rem;
         min-width: 30rem;
         background: black;
+
+        .label {
+          color: white;
+          border-color: #ebebeb;
+        }
       }
 
       &2 {
@@ -148,33 +175,32 @@ export default {
       &4 {
         width: 30rem;
         background: crimson;
+
+        .label {
+          color: white;
+          border-color: #ebebeb;
+        }
       }
       &5 {
         width: 55rem;
-        background: chartreuse;
       }
 
       &6 {
         width: 30rem;
-        background: chartreuse;
       }
 
       &7 {
         width: 30rem;
-        background: chocolate;
       }
 
       &8 {
         width: 70rem;
-        background: chartreuse;
       }
       &9 {
         width: 30rem;
-        background: chartreuse;
       }
       &10 {
         width: 30rem;
-        background: chartreuse;
       }
     }
   }

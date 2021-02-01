@@ -23,8 +23,8 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  padding: 1rem;
-  margin: 2rem 0;
+  padding: 2rem 1rem;
+  margin-bottom: 1rem;
 
   .image {
     width: 100%;

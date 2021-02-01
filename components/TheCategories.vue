@@ -1,17 +1,69 @@
 <template>
   <div class="container">
     <ul>
-      <li @click="$store.dispatch('changeCountryIndex', 'usa')">USA</li>
-      <li @click="$store.dispatch('changeCountryIndex', 'de')">Germany</li>
-      <li @click="$store.dispatch('changeCountryIndex', 'uk')">UK</li>
-      <li @click="$store.dispatch('changeCountryIndex', 'fr')">France</li>
-      <li @click="$store.dispatch('changeCountryIndex', 'de')">Japan</li>
-      <li @click="$store.dispatch('changeCountryIndex', 'usa')">Spain</li>
-      <li @click="$store.dispatch('changeCountryIndex', 'usa')">Russia</li>
-      <li @click="$store.dispatch('changeCountryIndex', 'usa')">China</li>
+      <li
+        @click="fetchData('us')"
+        :class="{ active: $store.state.countryIndex == 'us' }"
+      >
+        USA
+      </li>
+      <li
+        @click="fetchData('de')"
+        :class="{ active: $store.state.countryIndex == 'de' }"
+      >
+        Germany
+      </li>
+      <li
+        @click="fetchData('gb')"
+        :class="{ active: $store.state.countryIndex == 'gb' }"
+      >
+        UK
+      </li>
+      <li
+        @click="fetchData('fr')"
+        :class="{ active: $store.state.countryIndex == 'fr' }"
+      >
+        France
+      </li>
+      <li
+        @click="fetchData('jp')"
+        :class="{ active: $store.state.countryIndex == 'jp' }"
+      >
+        Japan
+      </li>
+      <li
+        @click="fetchData('tr')"
+        :class="{ active: $store.state.countryIndex == 'tr' }"
+      >
+        Turkey
+      </li>
+      <li
+        @click="fetchData('ru')"
+        :class="{ active: $store.state.countryIndex == 'ru' }"
+      >
+        Russia
+      </li>
+      <li
+        @click="fetchData('ch')"
+        :class="{ active: $store.state.countryIndex == 'cn' }"
+      >
+        China
+      </li>
     </ul>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    fetchData(input) {
+      this.$store.dispatch('changeCountryIndex', input)
+      this.$store.dispatch('fetchNewData', input)
+      console.log('clicked')
+    },
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .container {
@@ -34,6 +86,10 @@
       padding-left: 0.3rem;
       cursor: pointer;
     }
+  }
+  .active {
+    color: crimson;
+    border-color: crimson;
   }
 }
 
