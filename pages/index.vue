@@ -6,14 +6,15 @@
           <h4>{{ $store.state.column1Label }}</h4>
         </div>
         <test-box
-          v-for="article in $store.state.headlines"
+          v-for="article in $store.state.column1News"
           :key="article.title"
           :title="article.title"
           :description="article.description"
           :image="article.urlToImage"
-          :cnn="article.source.id === 'cnn'"
+          :cnn="article.source.id === 'tech-crunch'"
           :nbc="article.source.id === 'nbc-news'"
           black="true"
+          :url="article.url"
         />
       </div>
       <div class="column column2">
@@ -28,6 +29,7 @@
           :image="article.urlToImage"
           :cnn="article.source.id === 'cnn'"
           :nbc="article.source.id === 'nbc-news'"
+          :url="article.url"
         />
       </div>
 
@@ -41,6 +43,7 @@
           :title="article.title"
           :description="article.description"
           :image="article.urlToImage"
+          :url="article.url"
         />
       </div>
       <div class="column column4">
@@ -53,6 +56,7 @@
           :title="article.title"
           :description="article.description"
           :image="article.urlToImage"
+          :url="article.url"
         />
       </div>
       <div class="column column5">
@@ -65,6 +69,7 @@
           :title="article.title"
           :description="article.description"
           :image="article.urlToImage"
+          :url="article.url"
         />
       </div>
       <div class="column column6">
@@ -77,18 +82,7 @@
           :title="article.title"
           :description="article.description"
           :image="article.urlToImage"
-        />
-      </div>
-      <div class="column column7">
-        <div class="label">
-          <h4>{{ $store.state.column7Label }}</h4>
-        </div>
-        <test-box
-          v-for="article in $store.state.column7News"
-          :key="article.title"
-          :title="article.title"
-          :description="article.description"
-          :image="article.urlToImage"
+          :url="article.url"
         />
       </div>
     </div>
@@ -102,6 +96,9 @@ export default {
   components: {
     TestBox,
   },
+  mounted() {
+    this.$store.commit('toggleActivePage', 'home')
+  },
 }
 </script>
 
@@ -114,6 +111,7 @@ export default {
   position: relative;
   overflow-x: scroll;
   overflow-y: hidden;
+  color: #050f1a;
 
   .columns {
     display: flex;
@@ -123,8 +121,8 @@ export default {
     left: 0;
 
     .column {
-      border-left: 1px solid black;
-      border-right: 1px solid black;
+      border-left: 1px solid #050f1a;
+      border-right: 1px solid #050f1a;
       overflow-y: scroll;
 
       .label {
@@ -135,7 +133,7 @@ export default {
         padding: 0.7rem;
         justify-content: center;
         align-items: center;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid #050f1a;
 
         h4 {
           font-size: 1rem;
@@ -146,7 +144,7 @@ export default {
         width: 30rem;
         max-width: 30rem;
         min-width: 30rem;
-        background: black;
+        background: #050f1a;
 
         .label {
           color: white;
@@ -168,17 +166,17 @@ export default {
       &3 {
         width: 55rem;
         .label {
-          color: black;
-          border-color: black;
+          color: #050f1a;
+          border-color: #050f1a;
         }
       }
       &4 {
         width: 30rem;
-        background: crimson;
+        background: #00fff6;
 
         .label {
-          color: white;
-          border-color: #ebebeb;
+          color: #050f1a;
+          border-color: #050f1a;
         }
       }
       &5 {

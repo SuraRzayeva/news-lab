@@ -10,6 +10,9 @@
       <p :class="{ crimson: cnn, green: nbc, black: black }">
         {{ description }}
       </p>
+      <a :href="url" target="_blank">
+        <h3 :class="{ readmore: black }">Read more</h3></a
+      >
     </div>
   </div>
 </template>
@@ -17,14 +20,13 @@
 <script>
 export default {
   name: 'TestBox',
-  props: ['title', 'image', 'description', 'cnn', 'nbc', 'black'],
+  props: ['title', 'image', 'description', 'cnn', 'nbc', 'black', 'url'],
 }
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
   padding: 2rem 1rem;
-  margin-bottom: 1rem;
 
   .image {
     width: 100%;
@@ -36,17 +38,11 @@ export default {
   .title {
     margin: 1rem 0;
     h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 800;
     }
     .black {
       color: white;
-    }
-    .crimson {
-      color: black;
-    }
-    .green {
-      color: black;
     }
   }
   .description {
@@ -55,23 +51,22 @@ export default {
       font-size: 1.6rem;
       font-weight: 600;
     }
+
+    h3 {
+      margin-top: 1rem;
+      font-size: 1.7rem;
+    }
     .black {
       color: white;
     }
-    .crimson {
-      color: black;
-    }
-    .green {
-      color: black;
+    .readmore {
+      color: white;
     }
   }
 }
 .crimson {
-  background: crimson;
-  color: black;
-}
-.green {
-  background: greenyellow;
+  background: #00fff6;
+  color: #050f1a;
 }
 
 @media screen and (max-width: 500px) {

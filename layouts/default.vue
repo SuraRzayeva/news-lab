@@ -1,7 +1,7 @@
 <template>
   <div>
     <the-header primaryColor="red" />
-    <!-- <the-welcome /> -->
+    <the-welcome />
     <the-categories />
     <Nuxt />
   </div>
@@ -21,12 +21,14 @@ export default {
   mounted() {
     setTimeout(() => {
       this.$store.dispatch('deactivateWelcoming')
-    }, 2000)
+    }, 1000)
   },
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 html {
   font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
@@ -46,8 +48,13 @@ html {
   margin: 0;
 }
 
+a {
+  color: unset;
+  text-decoration: none;
+}
+
 body {
-  background: #ebebeb;
+  background: #f0fffc;
   width: 100vw;
   height: 100vh;
   min-width: 100vw;

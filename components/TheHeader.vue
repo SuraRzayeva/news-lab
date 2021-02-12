@@ -5,33 +5,50 @@
       <p>{{ getDate }}</p>
     </div>
     <div class="logo">
-      <img src="../assets/icons/logo.svg" alt="" />
+      <nuxt-link to="/"> <span>Crypto</span><span>News</span></nuxt-link>
     </div>
     <div class="navbar">
-      <loupe />
-      <div class="burger-menu">
-        <div class="line line-1"></div>
-        <div class="line line-2"></div>
-        <div class="line line-3"></div>
+      <a href="https://surarzayeva.com" target="_blank"> <loupe /> </a>
+      <div class="burger-menu" @click="toggleMenu">
+        <div
+          class="line line-1"
+          :class="{ line1Close: $store.state.menuOpen }"
+        ></div>
+        <div
+          class="line line-2"
+          :class="{ line2Close: $store.state.menuOpen }"
+        ></div>
+        <div
+          class="line line-3"
+          :class="{ line3Close: $store.state.menuOpen }"
+        ></div>
       </div>
     </div>
+    <sidebar />
   </div>
 </template>
 
 <script>
-import Clock from '~/assets/icons/clock'
-import Loupe from '~/assets/icons/loupe'
+import Clock from '~/assets/icon/clock'
+import Loupe from '~/assets/icon/loupe'
+import Sidebar from '@/components/Sidebar.vue'
 
 export default {
   name: 'TheHeader',
   components: {
     Clock,
     Loupe,
+    Sidebar,
   },
   data() {
     return {
       back: 'green',
     }
+  },
+  methods: {
+    toggleMenu() {
+      this.$store.commit('toggleMenu')
+    },
   },
   computed: {
     getDate() {
@@ -50,7 +67,7 @@ export default {
   font-size: 1.4rem;
   padding: 3rem 4rem;
   align-items: center;
-  border-bottom: 0.1rem black solid;
+  background: #050f1a;
 
   .time {
     display: flex;
@@ -58,6 +75,7 @@ export default {
 
     p {
       margin: 0 1rem;
+      color: #00fff6;
     }
   }
 
@@ -68,9 +86,23 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
-    img {
-      height: 6rem;
+    a {
+      position: relative;
+      display: inline-block;
+      padding: 15px 30px;
+      color: #00fff6;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.5rem;
+      overflow: hidden;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
   .navbar {
@@ -85,12 +117,26 @@ export default {
       flex-direction: column;
       justify-content: space-between;
       margin-left: 3rem;
+      cursor: pointer;
+      z-index: 200;
 
       .line {
         height: 0.2rem;
         width: 100%;
-        background: black;
+        background: #00fff6;
         border-radius: 2rem;
+        transition: 0.2s ease all;
+      }
+      .line1Close {
+        transform: translate(0, 0.7rem) rotate(45deg);
+        background: #050f1a;
+      }
+      .line2Close {
+        opacity: 0;
+      }
+      .line3Close {
+        transform: translate(0, -0.7rem) rotate(-45deg);
+        background: #050f1a;
       }
     }
   }
@@ -98,11 +144,30 @@ export default {
 
 @media screen and (max-width: 500px) {
   .container {
-    padding: 1rem;
+    padding: 1.5rem;
+
+    .logo {
+      a {
+        font-size: 1.2rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+      }
+    }
 
     .time {
       p {
         font-size: 1rem;
+      }
+    }
+
+    .navbar {
+      .burger-menu {
+        width: 1.4rem;
+        height: 1.4rem;
+        .line {
+          height: 0.1rem;
+        }
       }
     }
   }
